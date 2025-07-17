@@ -10,3 +10,4 @@ Renormalization Group Flow as Optimal Transport,arXiv:2202.11737, Jordan Cotler 
 - [ ] Derivation of Polchinski's equation
 - [ ] Intuitive introduction of Optimal transport problems
 - [ ] Renormalization group flow recasted as an optimization problem
+- [ ] Flow-matching's equivalence to Score-matching recasted as deterministic and stochastic formulation of RG
