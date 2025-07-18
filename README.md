@@ -7,6 +7,7 @@ Renormalizing Diffusion Models,arXiv:2308.12355, Jordan Cotler and Semon Rezchik
 Renormalization Group Flow as Optimal Transport,arXiv:2202.11737, Jordan Cotler and Semon Rezchikov
 
 # TO-DO
+- [ ] Wagner-Morris equation
 - [ ] Derivation of Polchinski's equation
 - [ ] Intuitive introduction of Optimal transport problems
 - [ ] Renormalization group flow recasted as an optimization problem
