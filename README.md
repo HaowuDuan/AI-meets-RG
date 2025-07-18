@@ -6,7 +6,7 @@ Physists has been suspecting the connection between machine learning and renorma
 In order to fully understand this connection, I am writing a note to go through every details. And I hope I can retell this whole story in a manner that is more friendly for people who are not familar with RG or at least I would attempt to do so. 
 
 # TO-DO
-- [ ] Wagner-Morris equation, Polchinski's equation
+- [ ] Wegner-Morris equation, Polchinski's equation
 - [ ] Gradiant flow
 - [ ] Intuitive introduction of Optimal transport problems
 - [ ] Renormalization group flow recasted as an optimization problem
