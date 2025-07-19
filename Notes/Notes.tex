@@ -1,0 +1,199 @@
+%\pdfoutput=1
+\documentclass[a4paper,11pt]{article}
+%\let\ifpdf\relax
+%\usepackage{ifpdf}
+\usepackage{jheppub}
+%\usepackage{natbib}
+\usepackage{bm}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{shadows.blur}
+\usepackage{float}
+%\JHEP{00(2002)000}
+%\usepackage{graphicx}% use this package if an eps figure is included.
+%\usepackage{subcaption}
+%\JHEPspecialurl{http://jhep.sissa.it/JOURNAL/JHEP3.tar.gz}
+
+%\usepackage{epsfig,multicol,amsmath,amssymb}
+%\usepackage[T1]{fontenc}
+%%%%%%%%%%%%%%%%%%%%%%%% latex 2 eps %%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{epstopdf}
+%\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `basename #1  .tif`.png} 
+%\usepackage{bm}  % for the command \bm (boldface greek letters)
+%\usepackage{amsmath}     % defines the command \dfrac (fractions in displaystyle
+%\usepackage{epsfig,epsf}
+%\usepackage{showkeys}
+%\usepackage{graphicx}
+%\usepackage{graphicx}
+%\usepackage{fancybox}
+%\usepackage{epsfig,multicol}
+%\usepackage{rotating}
+%\usepackage{showkeys}
+%\textwidth=13.5cm
+%\textheight=22cm
+%\topmargin=0cm
+%\oddsidemargin=0cm
+%\usepackage{cite}
+%\usepackage{lmodern}
+%\usepackage{lipsum}
+\voffset1.5cm
+
+
+
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\def\beq{\begin{equation}}
+\def\eeq{\end{equation}}
+\def\bea{\begin{eqnarray}}
+\def\eea{\end{eqnarray}}
+%
+
+\def\eq#1{{Eq.~(\ref{#1})}}
+\def\fig#1{{Fig.~\ref{#1}}}
+\newcommand{\bas}{\bar{\alpha}_S}
+\newcommand{\as}{\alpha_S}
+\newcommand{\bra}[1]{\langle #1 |}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\bracket}[2]{\langle #1|#2\rangle}
+\newcommand{\intp}[1]{\int \frac{d^4 #1}{(2\pi)^4}}
+\newcommand{\mn}{{\mu\nu}}
+\newcommand{\tr}{{\rm tr}}
+ \newcommand{\SP}{\langle \mid S^2 \mid\rangle}
+\newcommand{\Tr}{{\rm Tr}}
+\newcommand{\T} {\mbox{T}}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+\newcommand{\Lb}{\left(}
+\newcommand{\Rb}{\right)}
+\setcounter{secnumdepth}{7}
+\setcounter{tocdepth}{7}
+\renewcommand{\v}[1]{ \ensuremath{ {\bm{#1}} }}                  
+\parskip=\itemsep               %?
+
+
+%---layout fuer eine dina4 seite-------------------
+\setlength{\textheight}{23cm}
+\setlength{\textwidth}{178mm}
+\setlength{\topmargin}{-2.5cm}
+\setlength{\oddsidemargin}{1.3cm}
+
+%\input psfig
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+%
+\newcommand{\m}{\margi }
+                 
+\newcommand{\lash}[1]{\not\! #1 \,}
+\newcommand{\nn}{\nonumber}
+\newcommand{\D}{\partial}
+%239
+\newcommand{\h}{\frac{1}{2}}
+\newcommand{\g}{{\rm g}}
+\newcommand{\x}{\vec{x}}
+
+\newcommand{\z}{\vec{z}}
+\newcommand{\kv}{\vec{k}}
+\newcommand{\qv}{\vec{q}}
+\newcommand{\lv}{\vec{l}}
+\newcommand{\mv}{\vec{m}}
+%\newcommand{\q_0}{\vec{q_0}}
+%\newcommand{\q'}{\vec{q}'}
+%\newcommand{\v \rho}{\vec\rho}
+
+\newcommand{\y}{{\cal Y}}
+\newcommand{\el}{{\cal L}}
+\newcommand{\A}{{\cal A}}
+\newcommand{\Ka}{{\cal K}}
+\newcommand{\al}{\alpha}
+\newcommand{\be}{\beta}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\ga}{\gamma}
+\newcommand{\de}{\delta}
+\newcommand{\De}{\Delta}
+\newcommand{\et}{\eta}
+\newcommand{\ka}{\vec{\kappa}}
+\newcommand{\la}{\lambda}
+\newcommand{\ph}{\varphi}
+\newcommand{\ro}{\varrho}
+\newcommand{\Ga}{\Gamma}
+\newcommand{\om}{\omega}
+\newcommand{\La}{\Lambda}
+\newcommand{\tG}{\tilde{G}}
+
+\newcommand{\pom}{I\!\!P}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ABBREVIATED JOURNAL NAMES
+%
+\def\ap#1#2#3{     {\it Ann. Phys. (NY) }{\bf #1} (19#2) #3}
+\def\arnps#1#2#3{  {\it Ann. Rev. Nucl. Part. Sci. }{\bf #1} (19#2) #3}
+\def\npb#1#2#3{    {\it Nucl. Phys. }{\bf B#1} (19#2) #3}
+\def\plb#1#2#3{    {\it Phys. Lett. }{\bf B#1} (19#2) #3}
+\def\prd#1#2#3{    {\it Phys. Rev. }{\bf D#1} (19#2) #3}
+\def\prep#1#2#3{   {\it Phys. Rr ep. }{\bf #1} (19#2) #3}
+\def\prl#1#2#3{    {\it Phys. Rev. Lett. }{\bf #1} (19#2) #3}
+\def\ptp#1#2#3{    {\it Prog. Theor. Phys. }{\bf #1} (19#2) #3}
+\def\rmp#1#2#3{    {\it Rev. Mod. Phys. }{\bf #1} (19#2) #3}
+\def\zpc#1#2#3{    {\it Z. Phys. }{\bf C#1} (19#2) #3}
+\def\mpla#1#2#3{   {\it Mod. Phys. Lett. }{\bf A#1} (19#2) #3}
+\def\nc#1#2#3{     {\it Nuovo Cim. }{\bf #1} (19#2) #3}
+\def\yf#1#2#3{     {\it Yad. Fiz. }{\bf #1} (19#2) #3}
+\def\cpc#1#2#3{    {\it Comp. Phys. Commun. }{\bf #1} (19#2) #3}
+\def\dis#1#2{      {\it Dissertation, }{\sf #1 } 19#2}
+\def\ib#1#2#3{     {\it ibid. }{\bf #1} (19#2) #3}
+\def\jpg#1#2#3{        {\it J. Phys}. {\bf G#1}#2#3}
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%r 
+%\renewcommand{\thefigure}{{\protect\bf\arabic{figure}}}
+\def\thefootnote{\fnsymbol{footnote}}
+\def\pom{{I\!\!P}}
+\def\reg{{I\!\!R}}
+\vskip1cm
+%\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Renormalization group, Stochastic processes and machine learning}
+%\author{A. Kovner, E. Levin and M. Lublinsky}
+\author[a]{Haowu Duan,}
+\affiliation[a]{Physics Department, University of Connecticut, 2152 Hillside Road, Storrs, CT 06269, USA}
+%\end{center}
+%\bigskip
+
+%\maketitle
+\abstract{Notes}
+
+
+%\end{abstract}
+
+\keywords{}
+%PACS numbers: 12.38.-t,24.85.+p,25.75.-q
+\begin{document}
+\maketitle
+
+\pagestyle{empty}
+
+
+\mbox{}
+
+
+\pagestyle{plain}
+
+\setcounter{page}{1}
+\author{}
+
+\abstract{ }
+\keywords{}
+\dedicated{}
+\preprint{}
+
+
+
+
+
+\date{\today}
+\begin{document}
+
+
+\end{document}
