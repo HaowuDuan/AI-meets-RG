@@ -155,13 +155,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{Renormalization group, Stochastic processes and machine learning}
-%\author{A. Kovner, E. Levin and M. Lublinsky}
+
 \author[a]{Haowu Duan,}
 \affiliation[a]{Physics Department, University of Connecticut, 2152 Hillside Road, Storrs, CT 06269, USA}
-%\end{center}
-%\bigskip
 
-%\maketitle
 \abstract{Notes}
 
 
@@ -193,7 +190,167 @@
 
 
 \date{\today}
-\begin{document}
+
+\newpage
+\section{Introduction}
+\subsection{Stochastic process, statistical field theory}
+\subsection{Wegner-Morris equation, Polchinski's equation and gradient flow and all that}
+Given a Euclidean action $S_E(\phi)$ in d dimension, we have the partition function,
+\begin{equation}
+\begin{split}
+Z=&\int D\phi \exp\{-S_E(\phi)\}
+\end{split}
+\end{equation}
+In practice, we don't want to deal with the full theory but effective theory at some scale $\Lambda$, where all the modes with energy greater than $\Lambda$ has been integrated out. The full theory would be defined at some initial scale $\Lambda_0$, namely, $S_E(\phi) \equiv S_{\Lambda_0}(\phi)$. Let us denote the field above some scale as $\phi_\Lambda^+$, and below that scale as $\phi_\Lambda^-$. By definition,
+\begin{equation}
+\begin{split}
+\exp\{-S_{\Lambda}(\phi_\Lambda^-)\}
+=\int D\phi_{\Lambda}^+ \exp\{-S_{\Lambda_0}(\phi)\}
+\end{split}
+\end{equation}
+Regardless how this was achieved in practice, the partition function is independent of arbitrary scale $\Lambda$.
+\begin{equation}
+\begin{split}
+Z=\int D\phi \exp\{-S_E(\phi)\} =\int D\phi_{\Lambda}^- \exp\{-S_{\Lambda}(\phi_\Lambda^-)\}
+\end{split}
+\end{equation}
+Therefore, the following identity must stay true at all times,
+\begin{equation}
+\begin{split}
+-\Lambda \frac{d}{d \Lambda}Z = \frac{d}{dt} Z =0
+\end{split}
+\end{equation}
+where $-\Lambda \frac{d}{d \Lambda} = \frac{d}{dt }$ is the RG time, with $t=\ln(\Lambda_0/\Lambda)$. We can imagine that a class of transformation will satisfy this condition,
+\begin{equation}
+\frac{d}{dt }\exp\{-S_{t}\}=\int d^dx \;\frac{\delta}{\delta \phi(x)}\Big(  \Psi(t, \phi(x)) \exp\{-S_{t}\} \Big)
+\end{equation}
+This is known as \textit{Wegner-Morris equation}. Where $\Psi(t, \phi(x))$ is determined by RG scheme. This equation implies that under RG transformation, field variable has been reparameterized, 
+\begin{equation}
+\delta \phi(x)=\frac{\delta \Lambda}{ \Lambda} \Psi(t, \phi(x))
+\end{equation}
+{\color{red} Think about how this is true.}
+
+
+
+\subsection{An exercise to internalize the concepts: zero dimensional field theory}
+In zero dimension, field variable $\phi(x)$ reduces to random variable $\phi$. We define the probability density $P_t(\phi)$,
+\begin{equation}
+\begin{split}
+P_t(\phi)=\frac{e^{-E_t(\phi)}}{Z_0}
+\end{split}
+\end{equation}
+where t is again the RG time. And the partition function is RG invariant. We are interested in how $P_t(\phi)$ or $\rho_t(\phi)=e^{-E_t(\phi)}$ evolves with time. It is non-trivial to write down the exact equation from first principle, but nevertheless, one can write to write down the equation that works. {\color{red}For now, let me just put into the equations}. Suppose the evolution of $\rho_t(\phi)$ satisfy the following Fokker-Planck equation of one-dimensional Ornstein-Uhlenbeck process. 
+\begin{equation}
+\begin{split}
+\frac{\partial \rho(\phi)}{\partial t}&=\frac{\partial }{\partial \phi} (\omega \phi+ D\frac{\partial }{\partial \phi}) \rho_t(\phi) \\
+&=\frac{\partial }{\partial \phi} \omega \phi \rho_t(\phi) +D \frac{\partial^2 }{\partial \phi^2} \rho_t(\phi) \label{Eq:WK}
+\end{split}
+\end{equation}
+recall that in general FP is of the form,
+\begin{equation}
+\begin{split}
+\frac{\partial \rho(\phi)}{\partial t}=\frac{\partial }{\partial \phi} A(\phi, t) \rho_t(\phi) +\frac{1}{2}\frac{\partial^2 }{\partial \phi^2} B(\phi,t) \rho_t(\phi)
+\end{split}
+\end{equation}
+This corresponds to a specific choice of drift and diffusion coefficients. Eq.~\eqref{Eq:WK} has the following solution,
+\begin{equation}
+\begin{split}
+\rho_t(\phi)=\int d\phi\; P(\phi, t | \phi_0,0) \rho_0(\phi_0)
+\end{split}
+\end{equation}
+{\color{red} The fact that WK only wrote the equation for un-normalized probability means their FK equation has to be linear. The question is then whether non-linear FK has any relevance for applications in field theory and Machine learning.} Where the propagator is given by,
+\begin{equation}
+\begin{split}
+P(\phi, t | \phi_0,0)=\Big[\frac{\omega}{2\pi D(1-e^{-2\omega t})} \Big]^{1/2} \exp\{ -\frac{\omega(\phi-e^{-\omega t}\phi_0)^2}{2D(1-e^{-2\omega t})}\}
+\end{split}
+\end{equation}
+One can clearly see at $t=0$ limit, we get $\lim_{t\rightarrow 0}\rho_t(\phi)=\rho_0(\phi_0)$ because the propagator collapsed into $\delta(\phi-\phi_0)$. On the other hand, $\rho_{\infty}(\phi)$ is a Gaussian distribution without any memories of the initial condition. The WK RG scheme can be generalized to higher dimension but we will discuss this later along Carosso RG scheme. It is easy to check that,
+\begin{equation}
+\int d\phi\; \rho_t(\phi)=\int d\phi_0\int d\phi\; P(\phi, t | \phi_0,0)\rho_0(\phi_0)=\int d\phi_0\; \rho_0(\phi_0)=Z_0
+\end{equation}
+Therefore, partition function is RG invariant. What Wegner-Morris proposed is that RG corresponds to a class of reparameterization transformation,
+\begin{equation}
+\begin{split}
+\phi'=\phi+\Psi_t(\phi) dt \;\;\; \Rightarrow \;\;\; \frac{\delta \phi'}{\delta \phi}=1+ \frac{\delta \Psi_t(\phi)}{\delta \phi} dt
+\end{split}
+\end{equation}
+we plug this transformation into the evolution of $Z_t$, and demand its invariance.
+\begin{equation}
+\begin{split}
+\int d\phi' P_{t+d t}(\phi') - \int d\phi P_{t}(\phi) =0
+\end{split}
+\end{equation}
+we than extract the part that is linear in $dt$. 
+\begin{equation}
+\begin{split}
+\rho_{t+d t}(\phi') &=\rho_{t}(\phi)+ dt\Big[ \partial_t\rho_{t}(\phi)+\Psi_t(\phi) \partial_{\phi}\rho_{t}(\phi) \Big] \\
+d\phi'&=d\phi+d\Psi_t(\phi) dt =d\phi+\partial_{\phi}\Psi_t(\phi) dtd \phi
+\end{split}
+\end{equation}
+Therefore,
+\begin{equation}
+\begin{split}
+&\int d\phi \; \Big(\partial_t\rho_{t}(\phi)+\Psi_t(\phi) \partial_{\phi}\rho_{t}(\phi) +\rho_{t}(\phi) \partial_{\phi}\Psi_t(\phi) \Big) \\
+=&\int d\phi \; \Big(\partial_t\rho_{t}(\phi)+ \partial_{\phi}\Psi_t(\phi)\rho_{t}(\phi) \Big) \\
+=& 0
+\end{split}
+\end{equation}
+Therefore we have $\partial_tP_{t}(\phi)+ \partial_{\phi}\Psi_t(\phi)P_{t}(\phi)=0$. However, one might wonder this is not the most general case as the result of this equation can be a total derivative of any function with vanishing boundary condition. However, since our choice of $\Psi_t(\phi)$ is not fix and it represent a class of transformation. The total derivative can be absorbed into the definition of $\Psi_t$. One can generalize from zero dimension to d dimension and obtain the Wegner-Morris equation. It's clear that FK of WK is a special case of Wegner-Morris equation,
+\begin{equation}
+\begin{split}
+\Psi_t(\phi)=\omega \phi+ D\frac{\partial \ln \rho_t(\phi)}{\partial \phi}
+\end{split}
+\end{equation}
+There are claims that the irreversibility of RG can be made sure if $\Psi_t(\phi,\rho_t)$ has specific $\rho_t$ dependence, namely the distribution at previous time. {\color{red} However, even for such types of equation, one can still derive time-reversed stochastic differential equation. So I am not so sure about this part. Also even if one add the $\rho_t$, there will be multiple discretization scheme that violates the time irreversibility but still have the same continue limit. } Next, we discuss Carosso RG and demonstrate that it has a clear interpretation of coarse graining in coordinate space. Let us start with the the Langevin equation associated with the Ornstein-Uhlenbeck process,
+\begin{equation}
+\begin{split}
+\partial_t \phi_t=-\omega \phi_t +\xi_t
+\end{split}
+\end{equation}
+where the $\xi_t$ satisfy,
+\begin{equation}
+\begin{split}
+\langle \xi_t \rangle=0 \;\; ;\langle \xi_t \xi_{t'} \rangle=2D\delta(t-t')
+\end{split}
+\end{equation}
+The solution of the Langevin equation is,
+\begin{equation}
+\begin{split}
+\phi_t=e^{-\omega t}\phi_0+ \int_0^t d\tau e^{-(t-\tau)\omega} \xi_{\tau}
+\end{split}
+\end{equation}
+Carrosso RG corresponds to the following \textit{Stochastic heat equation}, 
+\begin{equation}
+\partial_t \phi_t(x)=\partial^2_\mu \phi_t(x) +\xi_t(x)
+\end{equation}
+where the noises are normalized as,
+\begin{equation}
+\langle \xi_t(x) \xi_{t'}(y) \rangle=2D \delta^{d}(x-y)\delta(t-t')
+\end{equation}
+This implies that in momentum space, $\omega=k^2$, where k is the momentum of the modes. For simplicity, let's donote $\partial^2_\mu =\Delta$. Operatorially, the solution is,
+\begin{equation}
+\phi_t(x)=\int d^dy \langle  x|e^{t\Delta}| y\rangle \phi_0(y)+ \int_0^t d d\tau d^d y \langle  x|e^{(t-\tau)\Delta}| y\rangle \xi_\tau(y)
+\end{equation}
+where the heat kernel is well-known result,
+\begin{equation}
+\begin{split}
+ \langle  x|e^{t\Delta}| y\rangle=\frac{1}{[4\pi t]^{d/2}} e^{-\frac{(x-y)^2}{4t}}=\int \frac{d ^dk}{(2\pi)^d} e^{-i(x-y)\cdot k}e^{-k^2 t}
+\end{split}
+\end{equation}
+and we can immediately identify the real-space \textit{Coarse Graining} with the Gaussian smear $e^{-\frac{(x-y)^2}{4t}}$. Given the solution of the langevin equation, we can construct the corresponding Fokker-Planck equation for the probability density. Before we do that, let's further clarify the noise, namely,
+\begin{equation}
+
+\end{equation}
+
+
+\subsection{Gaussian process and its connection to attention mechanism}
+
+\subsection{Diffusion model}
+
+
+
+
+
 
 
 \end{document}
