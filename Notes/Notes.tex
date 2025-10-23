@@ -192,8 +192,13 @@
 \date{\today}
 
 \newpage
-\section{Introduction}
+\section{Introducing key concepts}
 \subsection{Stochastic process, statistical field theory}
+Here we review key results that we need for later sections in Stochastic processes and field theory.
+
+
+
+\newpage
 \subsection{Wegner-Morris equation, Polchinski's equation and gradient flow and all that}
 Given a Euclidean action $S_E(\phi)$ in d dimension, we have the partition function,
 \begin{equation}
@@ -228,8 +233,129 @@ This is known as \textit{Wegner-Morris equation}. Where $\Psi(t, \phi(x))$ is de
 \begin{equation}
 \delta \phi(x)=\frac{\delta \Lambda}{ \Lambda} \Psi(t, \phi(x))
 \end{equation}
-{\color{red} Think about how this is true.}
-
+{\color{red} Think about how this is true.} What gradient flow does is the following\cite{Abe:2018zdc},
+\begin{equation}
+\begin{split}
+\partial_t \phi_t(x)=-\frac{\delta S_t}{\delta \phi(x)} ;\;\;\; \phi_{t=0}(x)=\phi_0(x) \label{Eq:GF1}
+\end{split}
+\end{equation}
+where we update the field variable at each step based on the functional derivative of the effective action with respect to the field variable. This is also known as model A in the literature of critical dynamics. Because this is a deterministic evolution, we can denote effective field as a function of initial condition as $\phi_t[\phi_0(x)](x)$. Due to the invariance of the partition function, we can write the effective action at time t as,
+\begin{equation}
+\begin{split}
+e^{-S_t(\phi)}=\int D\phi_0 \delta(\phi-\phi_t(\phi_0)) e^{-S_0(\phi_0)}\label{Eq:GF2}
+\end{split}
+\end{equation}
+{\color{red} It is easy to show the invariance of partition function,
+\begin{equation}
+\begin{split}
+&
+\int D \phi e^{-S_t(\phi)}\\
+=&\int D \phi \int D\phi_0 \delta(\phi-\phi_t(\phi_0)) e^{-S_0(\phi_0)}\\
+=& \int D \phi_0 e^{-S_0(\phi_0)}
+\end{split}
+\end{equation}
+}
+Taking derivative on both side of the equation,
+\begin{equation}
+\begin{split}
+\partial_t e^{-S_t(\phi)}=\int D\phi_0 \partial_t\delta(\phi-\phi_t(\phi_0)) e^{-S_0(\phi_0)}
+\end{split}
+\end{equation}
+we can write the $\partial_t$ in terms of functional derivative using the chain rule,
+\begin{equation}
+\partial_t= \int dx \;\Big(\partial_t \phi(x) \Big)\frac{\delta}{\delta \phi(x)}
+\end{equation}
+as a result,
+\begin{equation}
+\begin{split}
+&\partial_t e^{-S_t(\phi)}\\
+=&\int D\phi_0  \int dx \;\Big(\partial_t \phi(x) \Big)\frac{\delta}{\delta \phi(x)} \delta(\phi-\phi_t(\phi_0)) e^{-S_0(\phi_0)} \\
+=&\int D\phi_0  \int dx \;\Big( -\frac{\delta S_t}{\delta \phi(x)} \Big)\frac{\delta}{\delta \phi(x)} \delta(\phi-\phi_t(\phi_0)) e^{-S_0(\phi_0)}  \\
+=&   \int dx \;\frac{\delta}{\delta \phi(x)}  \frac{\delta S_t}{\delta \phi(x)}\Big( \int D\phi_0   \delta(\phi-\phi_t(\phi_0)) e^{-S_0(\phi_0)} \Big) \\
+=&  \int dx \;\frac{\delta}{\delta \phi(x)}  \frac{\delta S_t}{\delta \phi(x)} e^{-S_t} \label{Eq:consistency1}
+\end{split}
+\end{equation}
+and we get,
+\begin{equation}
+\begin{split}
+\partial_t e^{-S_t(\phi)}=\int dx \; \Big[\frac{\delta^2 S_t}{\delta \phi^2(x)}-  (\frac{\delta S_t}{\delta \phi(x)} )^2 \Big]e^{-S_t}
+\end{split}
+\end{equation}
+expand $e^{-S_t}$, we get an equation for the effective action,
+\begin{equation}
+\begin{split}
+\partial_t S_t(\phi)=-\int dx \; \Big[\frac{\delta^2 S_t}{\delta \phi^2(x)}-  (\frac{\delta S_t}{\delta \phi(x)} )^2 \Big]
+\end{split}
+\end{equation}
+It is obvious that we have a UV divergence in $\frac{\delta^2 S_t}{\delta \phi^2(x)}$, which has to be regularized. 
+\begin{equation}
+\begin{split}
+\partial_t S_t(\phi)=-\int dxdy \; \mathcal{K}_t(x,y)\Big[\frac{\delta^2 S_t}{\delta \phi(x)\delta \phi(y)}-  \frac{\delta S_t}{\delta \phi(x)} \frac{\delta S_t}{\delta \phi(y)} \Big]
+\end{split}
+\end{equation}
+$\mathcal{K}_t(x,y)$ is a smearing kernel that remove UV modes. This is not to be confused with the kernel in Pochiski's equation, which was usually denoted as $K_t(p)$, but they are deeply related. This is because when there is $t$ dependence in the regularization kernel, there will be derivative acting on it. Their connection will be established exactly later. Suppose we separate the kinetic and interaction contribution of the action.
+\begin{equation}
+\begin{split}
+S_t=& \int dxdy \;\; \frac{1}{2}\phi_t(x) (-\partial_x^2 +m^2 )K_t(x,y) \phi_t(y)  + I_{t} \\
+      =& \int_k \frac{1}{2}\phi_t(k) (k^2 +m^2)K_t(k)\phi_t(-k) + I_{t} 
+\end{split}
+\end{equation}
+when unregularized, $K_t(x,y) =\Rigtharrow \delta(x-y)$, and the derivative formally act on $\delta(x-y)$. So far we did not specify the functional form of the smearing kernel. But we know that it has to remove high energy modes. Recall the relation between RG time and the momentum scale $\Lambda$ with initial condition $\Lambda_0$, $t=\ln \frac{\Lambda_0}{\Lambda}$. If $K_t(k)$ is a sharp cut-off, we can pick $K_t(k)=\theta(\Lambda^2_0e^{-2t}-k^2)$, for a smoother choice, we can use $K_t(k)=\exp(-k^2/\Lambda^2_0e^{-2t})$, which corresponds to a gaussian coarse graining procedure. Now we go through the similar procedure as Eq.~\eqref{Eq:consistency1} to derive the equation.
+\begin{equation}
+\begin{split}
+&\partial_t e^{-S_t(\phi)}\\
+=&\int_k \Big[\frac{1}{2}\phi_t(k) (k^2 +m^2)\phi_t(-k) (\partial_t K_t(k))+ \partial_t I_{t}  \Big]e^{-S_t(\phi)}
+ \\
+\label{Eq:consistency2}
+\end{split}
+\end{equation}
+Now the task is, without using gradient flow condition Eq.~\ref{Eq:GF2}, how do we make sure the invariance of the partition function. 
+\begin{equation}
+\begin{split}
+\partial_t Z 
+=& \int D\phi_t  \;\partial_t e^{-S_t(\phi_t)} \\
+=& \int D\phi_t \int_k \Big[\frac{1}{2}\phi_t(k) (k^2 +m^2)\phi_t(-k) \partial_t K_t(k)+ \partial_t I_{t}  \Big]e^{-S_t(\phi)}\\
+=& 0
+\end{split}
+\end{equation}
+This means, the interaction part of the action must evolves according to,
+\begin{equation}
+\langle \partial_t I_{t} \rangle=-\int_k \Big[\frac{1}{2} (k^2 +m^2)(\partial_t K_t(k)) \langle \phi_t(k) \phi_t(-k)  \rangle
+\end{equation}
+Now we have to think about what to do with $\langle \phi_t(k) \phi_t(-k)  \rangle$, and if we can somehow express it in term of $S_{t; int}$ alone, we will get an equation for $S_{t; int}$. 
+%By definition, the two point function is,
+%\begin{equation}
+%\begin{split}
+ %\langle \phi_t(k) \phi_t(-k)  \rangle=\frac{1}{Z} \frac{\delta^2 Z(J)}{\delta J(-k)\delta J(k)}\Big|_{J=0}
+%\end{split}
+%\end{equation}
+We note that $K_t(k)=\exp(-k^2/\Lambda^2_0e^{-2t})$,
+\begin{equation}
+\partial_t K_t(k)=(-2k^2/\Lambda^2_0e^{-2t})   \exp(-k^2/\Lambda^2_0e^{-2t})  
+\end{equation}
+when $k^2\ll \Lambda^2_0e^{-2t}$, the derivative is almost zero, while for $k^2\gg \Lambda^2_0e^{-2t}$, there is strong exp suppression. As a result, only $k^2/\Lambda^2_0e^{-2t} \sim \mathcal{O}(1)$ will contribute, we can think of this as smeared $\delta(k^2/\Lambda^2_0e^{-2t} -1)$. For convenience, we let $\Lambda_0e^{-t}=\Lambda$. To extract the effect due to the integration over the momentum shell around $\Lambda$, we first reduce the scale by $\Delta$ then take the continue limit. Let all the field modes to be separated into $\phi_\Lambda=\phi_{l}+ \phi_{h}$, where $h$ stands for high energy modes to be integrated out.
+\begin{equation}
+\begin{split}
+&I_{\Lambda}(\phi_\Lambda)\\
+=&I_\Lambda(\phi_{l}+ \phi_{h})\\
+=&I_\Lambda(\phi_{l})+\int_{k\in shell} \frac{\delta I_\Lambda}{\delta \phi_{h}(k)}\Big|_{\phi_{h}(k)=0} \phi_{h}(k)\\
++ & \frac{1}{2}\int_{k\in shell} \frac{\delta^2 I_\Lambda}{\delta \phi_{h}(k)\delta \phi_{h}(-k)}\Big|_{\phi_{h}(k)=0} \phi_{h}(k)\phi_{h}(-k)
+\end{split}
+\end{equation}
+we take,
+\begin{equation}
+\begin{split}
+ &\langle \phi_t(k) \phi_t(-k)  \rangle_{k\in shell} \rightarrow \int D\phi_{h}\; \phi_{h}(k) \phi_h(-k) e^{-S_{shell}}
+\end{split}
+\end{equation}
+where,
+\begin{equation}
+\begin{split}
+S_{shell}=& \int_{k\in shell} \frac{1}{2}\phi_\Lambda(k) (k^2 +m^2)K_\Lambda(k)\phi_\Lambda(-k) + \int_{k\in shell} \frac{\delta I_\Lambda}{\delta \phi_{h}(k)}\Big|_{\phi_{h}(k)=0} \phi_{h}(k)\\
++ &\frac{1}{2}\int_{k\in shell} \frac{\delta^2 I_\Lambda}{\delta \phi_{h}(k)\delta \phi_{h}(-k)}\Big|_{\phi_{h}(k)=0} \phi_{h}(k)\phi_{h}(-k)\\ \\ \\
+\end{split}
+\end{equation}
+{\color{red} We have to be very clear about what kind of correction was included in the expectation value. This is highly non-trivial}
 
 
 \subsection{An exercise to internalize the concepts: zero dimensional field theory}
@@ -338,19 +464,23 @@ where the heat kernel is well-known result,
 \end{split}
 \end{equation}
 and we can immediately identify the real-space \textit{Coarse Graining} with the Gaussian smear $e^{-\frac{(x-y)^2}{4t}}$. Given the solution of the langevin equation, we can construct the corresponding Fokker-Planck equation for the probability density. Before we do that, let's further clarify the noise, namely,
-\begin{equation}
 
-\end{equation}
 
+\subsection{Gradient flow and renormalization group}
 
 \subsection{Gaussian process and its connection to attention mechanism}
 
-\subsection{Diffusion model}
+\subsection{Relavent ML architectures}
 
 
+\newpage
+\section{Renormalization as an optimization problem}
 
 
+\newpage
+\section{Renormalizing diffusion model and multi-scale diffusion model}
 
-
+\bibliographystyle{JHEP}
+\bibliography{Notes}
 
 \end{document}

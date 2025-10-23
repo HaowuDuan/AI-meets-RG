@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  28 JUL 2025 10:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  2 SEP 2025 01:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -853,21 +853,39 @@ Package JHEP Warning: E-mails are missing.
 [2]
 
 [3]
+./Notes.tex:303: Undefined control sequence.
+l.303 when unregularized, $K_t(x,y) =\Rigtharrow
+                                                 \delta(x-y)$, and the deriv...
 
-[4] (./Notes.aux)
+? 
+
+
+[4]
+
+[5]
+
+[6]
+
+[7]
+
+[8]
+
+[9] (./Notes.bbl)
+
+[10] (./Notes.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `Notes.out' has not changed.
-(rerunfilecheck)             Checksum: 96496EBD8F02249E245E6E79FE6B02E6;1793.
+(rerunfilecheck)             Checksum: EBC7E05B47835A336AF3CC5A52466C18;2807.
  ) 
 Here is how much of TeX's memory you used:
- 31147 strings out of 473190
- 728834 string characters out of 5715801
- 1260312 words of memory out of 5000000
- 53846 multiletter control sequences out of 15000+600000
- 574447 words of font info for 91 fonts, out of 8000000 for 9000
+ 31197 strings out of 473190
+ 729546 string characters out of 5715801
+ 1261311 words of memory out of 5000000
+ 53864 multiletter control sequences out of 15000+600000
+ 574615 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,19n,105p,728b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
@@ -885,11 +903,12 @@ ive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/tex
 live/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
 ive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texliv
 e/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/
-2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Notes.pdf (5 pages, 202975 bytes).
+2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2
+025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on Notes.pdf (11 pages, 237660 bytes).
 PDF statistics:
- 203 PDF objects out of 1000 (max. 8388607)
- 146 compressed objects within 2 object streams
- 37 named destinations out of 1000 (max. 500000)
- 157 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 277 PDF objects out of 1000 (max. 8388607)
+ 211 compressed objects within 3 object streams
+ 65 named destinations out of 1000 (max. 500000)
+ 181 words of extra memory for PDF output out of 10000 (max. 10000000)
 

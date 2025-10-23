@@ -1,0 +1,8 @@
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{1}
+
+\bibitem{Abe:2018zdc}
+Y.~Abe and M.~Fukuma, {\it {Gradient flow and the renormalization group}},
+  {\em PTEP} {\bf 2018} (2018), no.~8 083B02,
+  [\href{http://arxiv.org/abs/1805.12094}{{\tt arXiv:1805.12094}}].
+
+\end{thebibliography}\endgroup

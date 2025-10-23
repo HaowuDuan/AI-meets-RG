@@ -1,6 +1,9 @@
-\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {1}Introducing key concepts}{2}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Stochastic process, statistical field theory}{2}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Wegner-Morris equation, Polchinski's equation and gradient flow and all that}{2}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}An exercise to internalize the concepts: zero dimensional field theory}{2}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Gaussian process and its connection to attention mechanism}{4}{subsection.1.4}%
-\contentsline {subsection}{\numberline {1.5}Diffusion model}{4}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.2}Wegner-Morris equation, Polchinski's equation and gradient flow and all that}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}An exercise to internalize the concepts: zero dimensional field theory}{6}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Gradient flow and renormalization group}{8}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Gaussian process and its connection to attention mechanism}{8}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}Relavent ML architectures}{8}{subsection.1.6}%
+\contentsline {section}{\numberline {2}Renormalization as an optimization problem}{9}{section.2}%
+\contentsline {section}{\numberline {3}Renormalizing diffusion model and multi-scale diffusion model}{10}{section.3}%
